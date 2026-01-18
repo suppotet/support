@@ -1,0 +1,166 @@
+/* Global styles */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f0f2f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Card */
+.card {
+  background-color: #fff;
+  padding: 40px 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* Facebook-style header */
+.facebook-title {
+  color: #1877f2;
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Subtitle */
+.card p {
+  margin-bottom: 30px;
+  color: #606770;
+  font-size: 14px;
+}
+
+/* Form inputs */
+.card input {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 1px solid #dddfe2;
+  border-radius: 6px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.card input:focus {
+  outline: none;
+  border-color: #1877f2;
+  box-shadow: 0 0 2px #1877f2;
+}
+
+/* Log In button */
+.card button {
+  width: 100%;
+  padding: 12px;
+  background-color: #1877f2;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.card button:hover {
+  background-color: #166fe5;
+}
+
+/* Links for Forgotten Password and Create New Account */
+.links {
+  margin-top: 15px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Forgot Password and Create New Account */
+.links a {
+  color: #1877f2;
+  text-decoration: none;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+.links span {
+  color: #606770;
+}
+
+/* New Account button */
+.links a:nth-child(3) {
+  background-color: #42b72a;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: bold;
+  text-align: center;
+  font-size: 14px;
+  width: 100%;
+  margin-top: 10px;
+  margin-right: 0; /* remove extra margin on small screens */
+  box-sizing: border-box;
+}
+
+.links a:nth-child(3):hover {
+  background-color: #36a420;
+}
+
+/* Footer / login link */
+.card .footer {
+  margin-top: 20px;
+  font-size: 13px;
+  color: #606770;
+}
+
+.card .footer a {
+  color: #1877f2;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.card .footer a:hover {
+  text-decoration: underline;
+}
+
+/* -------------------- */
+/* MOBILE RESPONSIVE */
+/* -------------------- */
+@media (max-width: 480px) {
+  .card {
+    padding: 30px 20px; /* smaller padding for mobile */
+  }
+
+  .facebook-title {
+    font-size: 28px; /* smaller title */
+  }
+
+  .card p {
+    font-size: 13px;
+  }
+
+  .card input, .card button, .links a:nth-child(3) {
+    font-size: 14px; /* smaller input/button font */
+    padding: 10px;
+  }
+
+  .links {
+    font-size: 13px;
+  }
+
+  .card .footer {
+    font-size: 12px;
+  }
+}
